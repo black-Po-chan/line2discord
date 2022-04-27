@@ -128,7 +128,7 @@ module.exports = {
             node: {
                 // lint時のパス解決のルート
                 // tsconfig.json の baseUrl と同じにしておけばOK
-                paths: ['.'],
+                paths: ['src'],
             },
         },
     },

@@ -1,13 +1,13 @@
 {
   "name": "line2discord",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "build/index.js",
   "repository": "https://github.com/pokemium/line2discord.git",
   "author": "pokemium <bluejapan73+dev@gmail.com>",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "lint": "eslint ./index.ts"
+    "lint": "eslint ./src/*.ts"
   },
   "devDependencies": {
     "@types/eslint": "^8.4.1",
