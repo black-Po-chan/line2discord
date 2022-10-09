@@ -6,9 +6,8 @@ Google Apps Script(以降、gas) で LINEからDiscord にメッセージの転�
 
 あくまで、`LINE -> Discord` のみの転送です。 `Discord -> LINE` には対応していません。
 
-```
-Note: claspは謎のエラーを吐いて機能しなかったので使っていません。原因がわかればclaspに移行予定です。
-```
+>**Note**  
+> claspは謎のエラーを吐いて機能しなかったので使っていません。原因がわかればclaspに移行予定です。
 
 ## 機能
 
@@ -43,7 +42,8 @@ Discordはアップロードできるファイルサイズに上限があるの�
 // e.g. https://discord.com/api/webhooks/944444000011111777/uxxxxxxxxxxxx_o-3IBBxxxxxxxxxJYTr31exxxxxxxxNukjN1gQe10rxxxxxxxxxxxx
 const DISCORD_WEBHOOK_URL = 'DISCORD_WEBHOOK_URL';
 
-// Googleドライブのフォルダ(後述)のID
+// GoogleドライブのフォルダのID
+// https://drive.google.com/drive/u/0/folders/XXXX の XXXX の部分
 const GDRIVE_FOLDER_ID = 'FOLDER_ID';
 
 // LINEの Messaging API のアクセストークン
@@ -69,7 +69,7 @@ gasのデプロイは、
 
 - 種類: `ウェブアプリ`
 - 次のユーザーとして実行: `自分(email)`
-- アクセスできるユーザー: `自分のみ`
+- アクセスできるユーザー: `全員`
 
 としてデプロイしてください。
 
