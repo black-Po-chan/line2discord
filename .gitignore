@@ -2,3 +2,5 @@ node_modules
 build
 **/tsconfig.tsbuildinfo
 src/_.ts
+.nvmrc
+.clasp.json

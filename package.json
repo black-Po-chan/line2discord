@@ -6,13 +6,16 @@
   "author": "pokemium <bluejapan73+dev@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "push": "clasp push -f",
+    "deploy": "clasp push -f && clasp deploy",
+    "redeploy": "clasp redeploy",
     "lint": "eslint ./src/*.ts"
   },
   "devDependencies": {
+    "@google/clasp": "^2.4.2",
     "@types/eslint": "^8.4.1",
     "@types/eslint-plugin-prettier": "^3.1.0",
-    "@types/google-apps-script": "^1.0.46",
+    "@types/google-apps-script": "^1.0.55",
     "@types/node": "^17.0.24",
     "@types/prettier": "^2.6.0",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
