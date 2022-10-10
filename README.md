@@ -59,7 +59,7 @@ const LINE_MESSAGING_API_ACCESS_TOKEN = 'LINE_MESSAGING_API_ACCESS_TOKEN';
 > yarn clasp create --type standalone --parentId PARENT_ID --title TITLE
 ```
 
-最後に、サービスで`Drive API`を選んで追加してください。
+`PARENT_ID` は GASプロジェクトを置きたいGoogleドライブのフォルダのIDです。
 
 ### デプロイ
 
@@ -67,17 +67,11 @@ const LINE_MESSAGING_API_ACCESS_TOKEN = 'LINE_MESSAGING_API_ACCESS_TOKEN';
 > yarn deploy
 ```
 
-gasのデプロイは、
-
-- 種類: `ウェブアプリ`
-- 次のユーザーとして実行: `自分(email)`
-- アクセスできるユーザー: `全員`
-
-としてデプロイしてください。
-
 gasがデプロイできたらウェブアプリのURL(例: `https://script.google.com/macros/s/xxxxxxxxxxxxxxxxxxxxxx/exec`)を、LINE Developersで`Messaging API > Webhook settings`に貼り付けてください。
 
 ![](images/demo2.png)
+
+もし、Verifyして 403エラー が起きる場合は、gasのコンソールで再デプロイを行なって Googleドライブへのアクセスを承認する必要があります。
 
 ## 参考記事
 
