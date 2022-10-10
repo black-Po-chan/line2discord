@@ -17,7 +17,7 @@ const parseLINEMessage = (e: LineMessageEvent) => {
   switch (msg.type) {
     case 'text':
       const message = msg.text ?? '';
-      sendDiscordMessage(profile.pictureUrl, profile.displayName, `「${message}」`);
+      sendDiscordMessage(profile.pictureUrl, profile.displayName, message);
       break;
 
     case 'image':
@@ -28,14 +28,14 @@ const parseLINEMessage = (e: LineMessageEvent) => {
           const mimetype = getMimeType(new Uint8Array(raw));
           const [url, ok] = writeGFile(`${uuid}.${EXT[mimetype]}`, raw, mimetype);
           if (ok) {
-            sendDiscordMessage(profile.pictureUrl, profile.displayName, `が画像を投稿しました ${url}`);
+            sendDiscordMessage(profile.pictureUrl, profile.displayName, url);
           }
           break;
         }
 
         case 'external': {
           const url = msg.contentProvider.originalContentUrl;
-          sendDiscordMessage(profile.pictureUrl, profile.displayName, `が画像を投稿しました ${url}`);
+          sendDiscordMessage(profile.pictureUrl, profile.displayName, url);
           break;
         }
       }
@@ -63,7 +63,7 @@ const parseLINEMessage = (e: LineMessageEvent) => {
       const uuid = Utilities.getUuid();
       const [url, ok] = writeGFile(`${uuid}.${EXT[mimetype]}`, raw, mimetype);
       if (ok) {
-        sendDiscordMessage(profile.pictureUrl, profile.displayName, `がスタンプを投稿しました\n${url}`);
+        sendDiscordMessage(profile.pictureUrl, profile.displayName, url);
       }
       break;
 

@@ -1,8 +1,9 @@
 /** Discord Webhook を使ってDiscordにメッセージを投稿する */
 const sendDiscordMessage = (avater: string, name: string, message: string) => {
   const payload = {
-    // avatar_url: avater,
-    content: `${name}${message}`,
+    username: name,
+    avatar_url: avater,
+    content: message,
   };
 
   UrlFetchApp.fetch(DISCORD_WEBHOOK_URL, {
