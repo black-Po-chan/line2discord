@@ -6,6 +6,11 @@
         "userSymbol": "Drive",
         "version": "v2",
         "serviceId": "drive"
+      },
+      {
+        "userSymbol": "Sheets",
+        "version": "v4",
+        "serviceId": "sheets"
       }
     ]
   },
@@ -17,6 +22,7 @@
   },
   "oauthScopes": [
     "https://www.googleapis.com/auth/drive",
+    "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/script.external_request"
   ]
 }

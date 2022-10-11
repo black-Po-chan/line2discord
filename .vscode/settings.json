@@ -1,4 +1,6 @@
 {
+    "deno.enable": true,
+    "deno.enablePaths": ["tools/"],
     "css.validate": false,
     "less.validate": false,
     "scss.validate": false,

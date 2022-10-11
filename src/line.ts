@@ -12,12 +12,20 @@ const parseLINEMessage = (e: LineMessageEvent) => {
   const userID = src.userId;
   if (!userID) return 200;
   const groupID = src.groupId;
+
+  const webhookURL = findDiscordWebhook(groupID);
+  if (!webhookURL) {
+    registerLINEGroup(groupID);
+
+    return 200;
+  }
+
   const profile = fetchLINEProfile(groupID, userID);
 
   switch (msg.type) {
     case 'text':
       const message = msg.text ?? '';
-      sendDiscordMessage(profile.pictureUrl, profile.displayName, message);
+      sendDiscordMessage(webhookURL, profile.pictureUrl, profile.displayName, message);
       break;
 
     case 'image':
@@ -28,14 +36,14 @@ const parseLINEMessage = (e: LineMessageEvent) => {
           const mimetype = getMimeType(new Uint8Array(raw));
           const [url, ok] = writeGFile(`${uuid}.${EXT[mimetype]}`, raw, mimetype);
           if (ok) {
-            sendDiscordMessage(profile.pictureUrl, profile.displayName, url);
+            sendDiscordMessage(webhookURL, profile.pictureUrl, profile.displayName, url);
           }
           break;
         }
 
         case 'external': {
           const url = msg.contentProvider.originalContentUrl;
-          sendDiscordMessage(profile.pictureUrl, profile.displayName, url);
+          sendDiscordMessage(webhookURL, profile.pictureUrl, profile.displayName, url);
           break;
         }
       }
@@ -63,7 +71,7 @@ const parseLINEMessage = (e: LineMessageEvent) => {
       const uuid = Utilities.getUuid();
       const [url, ok] = writeGFile(`${uuid}.${EXT[mimetype]}`, raw, mimetype);
       if (ok) {
-        sendDiscordMessage(profile.pictureUrl, profile.displayName, url);
+        sendDiscordMessage(webhookURL, profile.pictureUrl, profile.displayName, url);
       }
       break;
 
